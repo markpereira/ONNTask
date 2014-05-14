@@ -3,6 +3,10 @@ class TodoListsController < ApplicationController
 
   # GET /todo_lists
   # GET /todo_lists.json
+  
+  def home
+  end   
+
   def index
     @todo_lists = TodoList.all
   end

@@ -3,6 +3,10 @@ require "spec_helper"
 describe TodoListsController do
   describe "routing" do
 
+    it "routes to #home" do
+      get("/").should route_to("todo_lists#home")
+    end
+
     it "routes to #index" do
       get("/todo_lists").should route_to("todo_lists#index")
     end
