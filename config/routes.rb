@@ -1,4 +1,10 @@
 Odot::Application.routes.draw do
+  
+  get "/login" => "user_sessions#new", as: :login
+
+  resources :users  
+  resources :user_sessions, only: [:new, :create]
+
   get "todo_items/index"
   resources :todo_lists do
     resources :todo_items do

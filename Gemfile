@@ -37,10 +37,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'bcrypt-ruby' '~>3.1.2'
+gem 'bcrypt-ruby'
 
 group :development, :test do
 	gem 'rspec-rails', '~>2.0'
+	gem 'factory_girl_rails', '~>4.0'
 end	
 
 group :test do
