@@ -13,7 +13,7 @@
  */
 @import url(http://fonts.googleapis.com/css?family=Gruppo);
 
-*html {
+html {
 	max-width: 960px;
 	margin: auto;
 	display: inline-block;
