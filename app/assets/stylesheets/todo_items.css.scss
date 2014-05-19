@@ -2,10 +2,94 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url(http://fonts.googleapis.com/css?family=Gruppo);
+
+* {
+	font-family: 'Gruppo', cursive;
+}
+
+.content {
+	max-width: 960px ;
+	margin: auto ;
+	align: center ;
+}
+
 table.todo_items {
 	width: 100%;
-
 	th {
 		text-align: left;
 	}
+}
+
+img.list-map {
+	height: 200px ;
+	width: 300px ;
+	border-radius: 5px ;
+}
+
+ul.thumbnails{
+	list-style-type: none;
+}
+
+#APIReturnValues {
+	max-width: 400px ;
+	margin-top: 10px;
+	text-align: center;
+}
+
+div#googleMap img {
+	max-width :960px ;
+	margin: auto ;
+	height: 196px;
+	width: 296px;
+	border-radius: 10px;
+	align: center;
+}
+
+div#googleMap {
+	max-width :960px ;
+	margin: auto ;
+	align: center ;
+	height: 196px;
+	width: 296px;
+	border-radius: 10px;
+}
+
+li.span4 ul li {
+	list-style-type: none;
+	padding: 2px ;
+}
+
+div.content p {
+	margin-left: 10px;
+}
+
+div.searchLocation {
+	padding-top: 10px ;
+}
+
+div.submitList {
+	padding-bottom: 10px;
+}
+
+div.dynamicPos {
+	margin: auto;
+	text-align: center;
+}
+
+div#map-canvas {
+	margin: auto;
+	text-align: center;
+	margin-top: 10px ;
+	border-radius: 5px ;
+}
+
+div#map {
+	height: 300px ;
+	width: 400px ;
+	border-radius: 5px ;
+}
+
+p.login {
+	margin-top: 10px ;
 }

@@ -5,8 +5,10 @@
  */
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+@import url(http://fonts.googleapis.com/css?family=Gruppo);
+
 html {
-  font-family: sans-serif;
+  font-family: 'Gruppo', cursive;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }

@@ -9,13 +9,20 @@
 <body>
 
 <div class="navbar-brand">
-	<h1><%= link_to "Airtribuo", root_path %></h1>
-	<ul>
-		<li><%= link_to "Todo Lists", todo_lists_path %></li>	
-		<li> <%= link_to "Sign Up", new_user_path %></li>	
-	</ul>	
-	<br class="clear" />
-</div>	
+	<div class="tabbable tabs-right">
+  <ul class="nav nav-tabs">
+
+  <% if @current_user %>
+
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Todo Lists", todo_lists_path %></li> 
+    <li> <%= link_to "Sign Out", user_session_path(@current_user.id), :method => 'delete' %></li>
+  <% else %>
+    <li><%= link_to "Sign In", new_user_session_path %></li> 
+  	<li> <%= link_to "Sign Up", new_user_path %></li>
+  <% end %>
+  </ul>
+  	<br class="clear" />
 
 <% flash.each do |type, message| %>
 <div class="alert flash <%= type %>">

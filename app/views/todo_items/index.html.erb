@@ -1,12 +1,12 @@
 <div class="content">
 <h1><%= @todo_list.title %></h1>
 
-<table class="todo_items">
+<table class="table table-hover">
 	<thead>
 		<tr>
 			<th width="25%">Completed?</th>
-			<th width="65%">Content</th>
-			<th width="10%">Functions</th>
+			<th width="55%">Content</th>
+			<th width="15%">Functions</th>
 		</tr>
 	</thead>
 	<tbody>		
@@ -16,21 +16,22 @@
 			<% if todo_item.completed? %>
 			  <%= todo_item.completed_at %>
 			<% else %>
-			  <%= link_to "Mark Complete", complete_todo_list_todo_item_path(todo_item), method: :patch %>		
+			  <button class="btn btn-success", text><%= link_to "Mark Complete", complete_todo_list_todo_item_path(todo_item), method: :patch %></button>		
 			<% end  %>
 		</td>
 		<td><%= todo_item.content %></td>
 		<td>
-			<%= link_to "Edit", edit_todo_list_todo_item_path(todo_item) %>
-			<%= link_to "Delete", todo_list_todo_item_path(todo_item), method: :delete, data: { confirm: "Are you sure?" } %>
+			<button class="btn btn-warning", text><%= link_to "Edit", edit_todo_list_todo_item_path(todo_item) %></button>
+			<button class="btn btn-danger", text><%= link_to "Delete", todo_list_todo_item_path(todo_item), method: :delete, data: { confirm: "Are you sure?" } %></button>
 		</td>
 	</tr>	
 	<% end %>
 </tbody>
 </table>
-
+<hr>
 <p>
-	<%= link_to "New Todo Item", new_todo_list_todo_item_path %>
+	<button class="btn btn-info", text><%= link_to "New Todo Item", new_todo_list_todo_item_path %></button>
+	<button class="btn btn-inverse", text><%= link_to 'Back', todo_lists_path %></button>
 </p>
 </div>
 

@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
 
   # GET /users/new
+  def index
+    redirect_to root_path
+  end  
+
   def new
     @user = User.new
   end

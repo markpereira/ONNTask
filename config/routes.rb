@@ -1,9 +1,11 @@
 Odot::Application.routes.draw do
   
   get "/login" => "user_sessions#new", as: :login
+  delete "/user_sessions/:id" => "user_sessions#destroy", as: :destroy_user_session_path
 
   resources :users  
-  resources :user_sessions, only: [:new, :create]
+  resources :user_sessions
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   get "todo_items/index"
   resources :todo_lists do

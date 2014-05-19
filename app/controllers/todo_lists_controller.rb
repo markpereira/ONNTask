@@ -47,6 +47,9 @@ class TodoListsController < ApplicationController
   # PATCH/PUT /todo_lists/1
   # PATCH/PUT /todo_lists/1.json
   def update
+    @todo_list.latitude = params[:latitude]
+    @todo_list.longitude = params[:longitude]
+    
     respond_to do |format|
       if @todo_list.update(todo_list_params)
         format.html { redirect_to @todo_list, notice: 'Todo list was successfully updated.' }

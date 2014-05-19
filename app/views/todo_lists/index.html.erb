@@ -1,20 +1,185 @@
-<h1>Todo Lists</h1>
+<!DOCTYPE html>
+<html>
+<head>
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&center&zoom=18size=300x300&markers=color:blue|label:S|">
+    </script> 
+</head>
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { height: 100% }
+</style>
+<body class="content">
+
+  <script>
+    <% if @current_user %>
+      // Thanks Erik!
+      window.todoListLocations = <%== ActiveSupport::JSON.encode @current_user.todo_lists %>;
+    <% end %>
+  </script>
 
 
-<% @todo_lists.each do |todo_list| %>
-<div class="todo_list" id="<%= dom_id(todo_list) %>">
-  <h2><%= todo_list.title %></h2>
-    <p><%= todo_list.description %></p>
-      <ul class="functions">
-        <li><%= link_to "List Items", todo_list_todo_items_path(todo_list) %></li>
-        <li><%= link_to 'Show', todo_list %></li>
-        <li><%= link_to 'Edit', edit_todo_list_path(todo_list) %></li>
-        <li><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-      </ul>
-      <br class="clear"/>
-</div>      
-<% end %>
+  <section>
+  	<h1>Todo Lists</h1>
+	<button class="btn btn-warning", text><%= link_to 'New Todo list', new_todo_list_path %></button>  	
+    <br>
+  </section>
+	<hr>  
+
+  <section>
+	<% @todo_lists.each do |todo_list| %>
+		<div class="todo_list" id="<%= dom_id(todo_list) %>">
+			<ul class="thumbnails">
+		  		<li class="span4">
+		      		<img data-src="holder.js/300x300" class="list-map"src="http://maps.google.com/maps/api/staticmap?sensor=false&center=<%= todo_list.latitude %>,<%= todo_list.longitude %>&zoom=14&size=300x300&markers=color:blue|label:S|<%= todo_list.latitude %>,<%= todo_list.longitude %>">
+
+		      		<h3><%= todo_list.title %></h3>
+		      		<p><%= todo_list.description %></p>
+			      		<button class="btn btn-success", text><%= link_to "List Items", todo_list_todo_items_path(todo_list) %></button>
+			      		<button class="btn btn-info", text><%= link_to 'Show', todo_list %></button>
+			      		<button class="btn btn-warning", text><%= link_to 'Edit', edit_todo_list_path(todo_list) %></button>
+			      		<button class="btn btn-danger", text><%= link_to 'Delete', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+			      		<br>
+			      	
+			      	<ul>	
+			      		<li></li>
+				        <li>Latitude : <%= todo_list.latitude %></li>
+				        <li>Longitude : <%= todo_list.longitude %></li>
+				        <% if todo_list.longitude && todo_list.latitude %>
+				    </ul>        
+		  		</li>
+			</ul>	
+	        <% end %>
+		</div>      
+		<hr>
+	<% end %>
 
 <br>
+    <div class="dynamicPos">
+      <h2> Test Dynamic Position</h2>   
+          <button id="watchPositionBtn", class="btn btn-success" >Watch Current Position</button>
+          <button id="stopWatchBtn", class="btn btn-danger" >Stop Watch Position</button>
+        <div class="alert alert-success", id="APIReturnValues"></div>
+        <div id="map-canvas" style=" padding:1px; border:1px solid; height:200px; width:300px;">
+        </div>
+     </div> 
+<br>  
+	</body> 
+	<hr>  
+<html>
 
-<%= link_to 'New Todo list', new_todo_list_path %>
+<script>
+//dynamic map setup
+jQuery(window).ready(function(){
+            jQuery("#watchPositionBtn").click(initiate_watchlocation);
+            jQuery("#stopWatchBtn").click(stop_watchlocation);
+        });
+
+
+function initialize(latitude, longitude, ignore_bounds) {   //Thanks Joel for adding ignore_bounds here
+    var mapOptions = {
+        zoom: 13,
+        center: new google.maps.LatLng(latitude, longitude),
+
+        mapTypeControl: true,
+        navigationControl: true,
+    }
+    console.log('init', mapOptions);
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    set_markers(new google.maps.LatLngBounds(null), map, ignore_bounds); //and adding ignore_bounds here
+}
+
+// Set all the markers in the location arrays and bound/frame the map
+//and adding ignore_bounds here
+function set_markers(bounds, map, ignore_bounds) {
+    
+    for (var i = 0; i < window.todoListLocations.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(window.todoListLocations[i].latitude, window.todoListLocations[i].longitude),
+            map: map
+        });
+        bounds.extend(marker.position);
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+    }
+    if (! ignore_bounds) {   //and adding ignore_bounds here
+      map.fitBounds(bounds);
+    }
+}
+
+ var watchProcess = null;
+      
+        function initiate_watchlocation() {
+          if (watchProcess == null) {
+              watchProcess = navigator.geolocation.watchPosition(handle_geolocation_query, handle_errors);
+          }
+        }
+ 
+        function stop_watchlocation() {
+          if (watchProcess != null)
+          {
+              navigator.geolocation.clearWatch(watchProcess);
+              watchProcess = null;
+          }
+        }
+ 
+        function handle_errors(error)
+        {
+            switch(error.code)
+            {
+                case error.PERMISSION_DENIED: alert("user did not share geolocation data");
+                break;
+ 
+                case error.POSITION_UNAVAILABLE: alert("could not detect current position");
+                break;
+ 
+                case error.TIMEOUT: alert("retrieving position timedout");
+                break;
+ 
+                default: alert("unknown error");
+                break;
+            }
+        }
+ 
+        function handle_geolocation_query(position) {
+          console.log(position.coords.latitude);
+          console.log(position.coords.longitude);
+          var text = "Current latitude: "  + position.coords.latitude  + "<br/>" +
+                     "Current longitude: " + position.coords.longitude + "<br/>" +
+                     //"position.coords.altitude: " + position.coords.altitude + "<br/>" +
+                     //"position.coords.accuracy(meters): "  + position.coords.accuracy  + "<br/>" +
+                     //"position.coords.altitudeAccuracy(meters): "  + position.coords.altitudeAccuracy  + "<br/>" +
+                     //"position.coords.heading: "  + position.coords.heading  + "<br/>" +
+                     //"position.coords.speed: "  + position.coords.speed  + "<br/>" +
+                     "Current timestamp: " + new Date(position.timestamp);
+                     initialize(position.coords.latitude, position.coords.longitude, true)
+          jQuery("#APIReturnValues").html(text);
+          jQuery("#APIReturnValues").css("border","3px solid green");
+ 
+          // var image_url = "http://maps.google.com/maps/api/staticmap?sensor=false&center=" + position.coords.latitude + ',' + position.coords.longitude +
+          //                 "&zoom=18&size=300x300&markers=color:blue|label:S|" + position.coords.latitude + ',' + position.coords.longitude;
+          
+          // jQuery("#googleMap").html(
+          //     jQuery(document.createElement("img")).attr("src", image_url)
+          // );
+        }
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<script>
+//static map
+        
+        // function gMapInit(){
+        //   var google_tile = "http://maps.google.com/maps/api/staticmap?sensor=false&center=-33.8679519,151.2100445&zoom=14&size=300x300"
+        //   jQuery("#googleMap").html(
+        //       jQuery(document.createElement("img")).attr("src", google_tile)
+        //   );
+        // }
+       
+    </script>
+

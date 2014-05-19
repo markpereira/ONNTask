@@ -7,6 +7,10 @@
 	<%= label_tag :password, "Password" %>
 	<%= password_field_tag :password %>
 	<br/>
+	
+	<p class="login"><%= submit_tag "Log In", :class => "btn btn-primary" %></p>
+	<br/>
 
-	<%= submit_tag "Log In" %>
+	<p><button class="btn btn-inverse", text><%= link_to "Forgot Password", new_password_reset_path %></button></p>
 <% end %>	
+

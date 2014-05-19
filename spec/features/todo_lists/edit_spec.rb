@@ -29,7 +29,6 @@ describe "Editing todo lists" do
 		update_todo_list todo_list: todo_list, 
 						 title: "New title", 
 						 description: "New description"
-
 		todo_list.reload
 
 		expect(page).to have_content("Todo list was successfully updated.")
