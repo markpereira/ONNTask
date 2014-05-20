@@ -204,6 +204,11 @@ div.container h1 {
 ====================================================
 Dropping markers - THANK YOU JOEL I WILL REMEMBER YOU FOREVER FOR THIS!!!!
 And for help with my facebook stuff.
+
+Markers are set in the following locations under /views
+	- users: _forms.html.erb
+	- user_sessions: new.html.erb
+	- todo_lists: home.html.erb;
 ====================================================
 */
 
@@ -337,7 +342,7 @@ div.marker1 {
 }div.marker18 {
    content:url(marker-32.png);
    top: 399px;
-   left: 340px;
+   left: 452px;
    position: absolute;
    z-index: 2;
    visibility: visible;
@@ -373,6 +378,13 @@ div.marker1 {
    content:url(marker-32.png);
    top: 400px;
    left: 60px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker24 {
+   content:url(marker-48.png);
+   top: 580px;
+   left: 120px;
    position: absolute;
    z-index: 2;
    visibility: visible;
