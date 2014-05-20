@@ -14,9 +14,10 @@
 @import url(http://fonts.googleapis.com/css?family=Gruppo);
 
 html {
-	max-width: 960px;
-	margin: auto;
-	display: inline-block;
+	background: url(background2.jpg);
+ 	background-size: 1440px 800px;
+ 	background-repeat:no-repeatdisplay: compact;
+ 	background-attachment: fixed;
 }
 
 div.alert{
@@ -27,3 +28,317 @@ div.alert{
 div.flash.success { border: 2px solid green; color: green; }
 div.flash.error   { border: 2px solid red; color: red; }
 div.flash.notice  { border: 2px solid blue; color: blue; }
+
+
+/*
+====================================================
+User register page
+====================================================
+*/
+#container-register {
+  background-color: rgba(68, 68, 68, 0.7);
+  max-width: 960px;
+  margin: auto;
+  padding: 1em;
+  border-radius: 1em;
+  text-color: white ;
+  margin-top: 10px ;
+}
+
+div#container-register h1 {
+	color: white;
+	font-size: 60px;
+}
+
+div.field label {
+	color: white;
+	font-size: 20px;
+}
+
+div.actions input {
+	color: black;
+	font-size: 20px;
+	height: 50px;
+	width: 350px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+div.actions input:hover {
+	color: black;
+	font-size: 20px;
+	height: 50px;
+	width: 350px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	box-shadow: 1px 1px 1px 2px green ;
+}
+
+div#container a {
+	color: white;
+	font-size: 20px;
+}
+/*
+====================================================
+User sign in page
+====================================================
+*/
+#container-login {
+  background-color: rgba(68, 68, 68, 0.7);
+  max-width: 960px;
+  margin: auto;
+  padding: 1em;
+  border-radius: 1em;
+  text-color: white ;
+  margin-top: 10px ;
+}
+
+div#container-login h1 {
+	color: white;
+	font-size: 60px;
+}
+
+div#container-login form label {
+	color: white;
+	min-width: 150px ;
+}
+
+p.login {
+	margin-top:20px;
+}
+
+input.btn.btn-primary {
+	color: white;
+	font-size: 20px;
+	height: 50px;
+	width: 300px;
+	border-radius: 10px;
+}
+
+input.btn.btn-primary:hover {
+	color: white;
+	font-size: 20px;
+	height: 50px;
+	width: 300px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px 2px whitesmoke ;
+}
+
+p button.btn.btn-inverse {
+  	text-color: white;
+
+}
+
+p button.btn.btn-inverse:hover {
+  	text-color: white;
+	box-shadow: 1px 1px 1px 2px whitesmoke ;
+}
+/*
+====================================================
+User forgot password - send email page
+====================================================
+*/
+#container-reset {
+  background-color: rgba(68, 68, 68, 0.7);
+  max-width: 960px;
+  margin: auto;
+  padding: 1em;
+  border-radius: 1em;
+  text-color: white ;
+  margin-top: 10px ;
+}
+
+div#container-reset h1 {
+	color: white;
+	font-size: 60px;
+}
+
+div#container-reset form label {
+	color:white;
+}
+
+div#container-reset form input {
+
+	border-radius: 5px;
+	color: black;
+}
+
+/*
+====================================================
+Dropping markers - THANK YOU JOEL!!!!
+====================================================
+*/
+
+div.marker {
+	transition: all ease-in-out 1s;	
+}
+
+body.preloaded div.marker {
+	top: -100px;
+}
+
+div.marker1 {
+   content:url(marker-48.png);
+   top: 499px;
+   left: 50px;
+   position: absolute;
+   z-index: 3;
+   visibility: visible;
+}div.marker2 {
+   content:url(marker-16.png);
+   top: 399px;
+   right: 99px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker3 {
+   content:url(marker-48.png);
+   top: 399px;
+   left: 399px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker4 {
+   content:url(marker-32.png);
+   top: 399px;
+   right: 699px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker5 {
+   content:url(marker-24.png);
+   top: 399px;
+   right: 199px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker6 {
+   content:url(marker-24.png);
+   top: 499px;
+   right: 799px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker7 {
+   content:url(marker-32.png);
+   top: 499px;
+   left: 866px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker8 {
+   content:url(marker-24.png);
+   top: 599px;
+   right: 599px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker9 {
+   content:url(marker-32.png);
+   top: 399px;
+   left: 799px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker10 {
+   content:url(marker-48.png);
+   top: 499px;
+   left: 50px;
+   position: absolute;
+   z-index: 3;
+   visibility: visible;
+}div.marker11 {
+   content:url(marker-16.png);
+   top: 399px;
+   right: 99px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker12 {
+   content:url(marker-48.png);
+   top: 480px;
+   right: 299px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker13 {
+   content:url(marker-32.png);
+   top: 400px;
+   right: 699px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker14 {
+   content:url(marker-24.png);
+   top: 399px;
+   right: 69px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker15 {
+   content:url(marker-24.png);
+   top: 499px;
+   right: 25px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker16 {
+   content:url(marker-32.png);
+   top: 499px;
+   left: 80px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker17 {
+   content:url(marker-24.png);
+   top: 599px;
+   right: 300px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker18 {
+   content:url(marker-32.png);
+   top: 399px;
+   left: 340px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker19 {
+   content:url(marker-32.png);
+   top: 599px;
+   right: 220px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker20 {
+   content:url(marker-32.png);
+   top: 437px;
+   right: 199px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker21 {
+   content:url(marker-32.png);
+   top: 342px;
+   right: 127px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker22 {
+   content:url(marker-32.png);
+   top: 399px;
+   left: 60px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}div.marker23 {
+   content:url(marker-32.png);
+   top: 400px;
+   left: 60px;
+   position: absolute;
+   z-index: 2;
+   visibility: visible;
+}
+
+
+

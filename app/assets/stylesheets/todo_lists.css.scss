@@ -3,8 +3,59 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.content {
-	max-width: 960px ;
-	margin: auto ;
-	align: center ;
+/*
+====================================================
+Profile specific to do list styling
+====================================================
+*/
+
+#container-mytodo {
+  background-color: rgba(68, 68, 68, 0.7);
+  max-width: 960px;
+  margin: auto;
+  padding: 1em;
+  border-radius: 1em;
+  text-color: white ;
+}
+
+div#container-mytodo h1 {
+	color: white;
+	font-size: 60px;
+}
+
+#container-mytodo a {
+	color: white;
+}
+
+li.span4 img.list-map {
+	height: 300px ;
+	width: 300px ;
+	list-style-type: none;
+	border-radius: 10px;
+}
+
+li.span4 h3, p {
+	color: white;
+}
+
+li.span4 button.btn.btn-success {
+	color: white;
+}
+
+ul.thumbnails {
+	list-style-type: none;
+}
+
+ul.thumbnails ul {
+	color: white;
+	list-style-type: none;
+}
+
+div#map-canvas {
+	border-radius: 10px;
+	margin-left: 20px ;
+}
+
+div#APIReturnValues.alert.alert-success {
+	max-width: 335px;
 }

@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Airtribuo</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <title>Airtribuo</title>
+<body class="preloaded"> 
+  <div class="navbar-brand">
+  	 <div class="container">
+        <ul class="nav nav-tabs">
 
-<div class="navbar-brand">
-	<div class="tabbable tabs-right">
-  <ul class="nav nav-tabs">
+          <% if @current_user %>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Todo Lists", todo_lists_path %></li> 
+            <li> <%= link_to "Sign Out", user_session_path(@current_user.id), :method => 'delete' %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li> 
+    	      <li> <%= link_to "Sign Up", new_user_path %></li>
+          <% end %>
+        </ul>
+     </div> 
 
-  <% if @current_user %>
+      <div>    
+          <% flash.each do |type, message| %>
+        <div class="alert flash <%= type %>">
+    	    <%= message %>
+        </div>
+          <% end %>	
+      </div>
 
-    <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Todo Lists", todo_lists_path %></li> 
-    <li> <%= link_to "Sign Out", user_session_path(@current_user.id), :method => 'delete' %></li>
-  <% else %>
-    <li><%= link_to "Sign In", new_user_session_path %></li> 
-  	<li> <%= link_to "Sign Up", new_user_path %></li>
-  <% end %>
-  </ul>
-  	<br class="clear" />
-
-<% flash.each do |type, message| %>
-<div class="alert flash <%= type %>">
-	<%= message %>
-</div>
-<% end %>	
-
-
-<%= yield %>
+      <div>        
+        <%= yield %>
+      </div> 
+  </div>      
 
 </body>
 </html>

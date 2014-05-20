@@ -2,15 +2,9 @@
 <html>
 <head>
    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&center&zoom=18size=300x300&markers=color:blue|label:S|">
-    </script> 
+   </script> 
 </head>
-<style type="text/css">
-  html { height: 100% }
-  body { height: 100%; margin: 0; padding: 0 }
-  #map-canvas { height: 100% }
-</style>
-<body class="content">
-
+<body>
   <script>
     <% if @current_user %>
       // Thanks Erik!
@@ -18,51 +12,45 @@
     <% end %>
   </script>
 
+<div id="container-mytodo">
+    <div>
+    	<h1><%= @current_user.first_name %>'s Todo Lists</h1>
+  	     <button class="btn btn-warning", text><%= link_to 'New Todo list', new_todo_list_path %></button>  	
+    </div>
+  	<hr>  
 
-  <section>
-  	<h1>Todo Lists</h1>
-	<button class="btn btn-warning", text><%= link_to 'New Todo list', new_todo_list_path %></button>  	
-    <br>
-  </section>
-	<hr>  
+    <section>
+    	<% @todo_lists.each do |todo_list| %>
+    		<div id="<%= dom_id(todo_list) %>">
+    			<ul class="thumbnails">
+    		  		<li class="span4">
+    		      		<img data-src="holder.js/300x300" class="list-map"src="http://maps.google.com/maps/api/staticmap?sensor=false&center=<%= todo_list.latitude %>,<%= todo_list.longitude %>&zoom=14&size=400x400&markers=color:blue|label:S|<%= todo_list.latitude %>,<%= todo_list.longitude %>">
 
-  <section>
-	<% @todo_lists.each do |todo_list| %>
-		<div class="todo_list" id="<%= dom_id(todo_list) %>">
-			<ul class="thumbnails">
-		  		<li class="span4">
-		      		<img data-src="holder.js/300x300" class="list-map"src="http://maps.google.com/maps/api/staticmap?sensor=false&center=<%= todo_list.latitude %>,<%= todo_list.longitude %>&zoom=14&size=300x300&markers=color:blue|label:S|<%= todo_list.latitude %>,<%= todo_list.longitude %>">
-
-		      		<h3><%= todo_list.title %></h3>
-		      		<p><%= todo_list.description %></p>
-			      		<button class="btn btn-success", text><%= link_to "List Items", todo_list_todo_items_path(todo_list) %></button>
-			      		<button class="btn btn-info", text><%= link_to 'Show', todo_list %></button>
-			      		<button class="btn btn-warning", text><%= link_to 'Edit', edit_todo_list_path(todo_list) %></button>
-			      		<button class="btn btn-danger", text><%= link_to 'Delete', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-			      		<br>
-			      	
-			      	<ul>	
-			      		<li></li>
-				        <li>Latitude : <%= todo_list.latitude %></li>
-				        <li>Longitude : <%= todo_list.longitude %></li>
-				        <% if todo_list.longitude && todo_list.latitude %>
-				    </ul>        
-		  		</li>
-			</ul>	
-	        <% end %>
-		</div>      
-		<hr>
-	<% end %>
-
-<br>
-    <div class="dynamicPos">
-      <h2> Test Dynamic Position</h2>   
-          <button id="watchPositionBtn", class="btn btn-success" >Watch Current Position</button>
-          <button id="stopWatchBtn", class="btn btn-danger" >Stop Watch Position</button>
-        <div class="alert alert-success", id="APIReturnValues"></div>
-        <div id="map-canvas" style=" padding:1px; border:1px solid; height:200px; width:300px;">
-        </div>
-     </div> 
+    		      		<h3><%= todo_list.title %></h3>
+    		      		<p><%= todo_list.description %></p>
+    			      		<button class="btn btn-success", text><%= link_to "List Items", todo_list_todo_items_path(todo_list) %></button>
+    			      		<button class="btn btn-info", text><%= link_to 'Show', todo_list %></button>
+    			      		<button class="btn btn-warning", text><%= link_to 'Edit', edit_todo_list_path(todo_list) %></button>
+    			      		<button class="btn btn-danger", text><%= link_to 'Delete', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+    			     </li> 
+    			      	<ul>	
+    				        <li>Latitude : <%= todo_list.latitude %></li>
+    				        <li>Longitude : <%= todo_list.longitude %></li>
+    				        <% if todo_list.longitude && todo_list.latitude %>
+    				      </ul>        
+    			</ul>	
+    	        <% end %>
+    		</div>      
+    		<hr>
+    	<% end %>
+        <div class="dynamicPos">
+          <h2> Test Dynamic Position</h2>   
+              <button id="watchPositionBtn", class="btn btn-success" >Watch Current Position</button>
+              <button id="stopWatchBtn", class="btn btn-danger" >Stop Watch Position</button>
+            <div class="alert alert-success", id="APIReturnValues"></div>
+            <div id="map-canvas" style=" padding:1px; border:1px solid; height:200px; width:300px;">
+            </div>
+         </div> 
 <br>  
 	</body> 
 	<hr>  
