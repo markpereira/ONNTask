@@ -20,6 +20,12 @@ html {
  	background-attachment: fixed;
 }
 
+/*
+====================================================
+User alerts and errors
+====================================================
+*/
+
 div.alert{
 	border: 2px solid #aaa;
 	padding: 10px;
@@ -165,7 +171,39 @@ div#container-reset form input {
 
 /*
 ====================================================
-Dropping markers - THANK YOU JOEL!!!!
+User home page
+====================================================
+*/
+
+div.airtribuo {
+	content:url(airtribuo.png);
+	max-width: 960px;
+  	margin: auto;
+  	margin-top: 10px;
+	height: 250px;
+	width: 250px;
+	border-radius: 100%;
+	align: center;
+	box-shadow: 0px 15px 6px -6px grey
+}
+
+div.container {
+	margin-left: 4em;
+}
+
+div.container h1 {
+	margin: auto;
+	text-align: center;
+	margin-top: 5px;
+	color: whitesmoke;
+	text-shadow: 0px 5px 4px rgba(149, 150, 150, 0.96);
+}	
+
+
+/*
+====================================================
+Dropping markers - THANK YOU JOEL I WILL REMEMBER YOU FOREVER FOR THIS!!!!
+And for help with my facebook stuff.
 ====================================================
 */
 
