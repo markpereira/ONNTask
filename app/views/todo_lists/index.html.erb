@@ -18,26 +18,25 @@
   	     <button class="btn btn-warning", text><%= link_to 'New Todo list', new_todo_list_path %></button>  	
     </div>
   	<hr>  
-
-    <section>
     	<% @todo_lists.each do |todo_list| %>
     		<div id="<%= dom_id(todo_list) %>">
     			<ul class="thumbnails">
-    		  		<li class="span4">
-    		      		<img data-src="holder.js/300x300" class="list-map"src="http://maps.google.com/maps/api/staticmap?sensor=false&center=<%= todo_list.latitude %>,<%= todo_list.longitude %>&zoom=14&size=400x400&markers=color:blue|label:S|<%= todo_list.latitude %>,<%= todo_list.longitude %>">
-
-    		      		<h3><%= todo_list.title %></h3>
+    		  	<li class="span4">
+    		      <img data-src="holder.js/300x300" class="list-map"src="http://maps.google.com/maps/api/staticmap?sensor=false&center=<%= todo_list.latitude %>,<%= todo_list.longitude %>&zoom=14&size=400x400&markers=color:blue|label:S|<%= todo_list.latitude %>,<%= todo_list.longitude %>">
+                <h3><%= todo_list.title %></h3>
     		      		<p><%= todo_list.description %></p>
-    			      		<button class="btn btn-success", text><%= link_to "List Items", todo_list_todo_items_path(todo_list) %></button>
+    			      		<button class="btn btn-success", text><%= link_to "List Items", todo_list_todo_items_path(todo_list) %>
+                    </button>
     			      		<button class="btn btn-info", text><%= link_to 'Show', todo_list %></button>
     			      		<button class="btn btn-warning", text><%= link_to 'Edit', edit_todo_list_path(todo_list) %></button>
-    			      		<button class="btn btn-danger", text><%= link_to 'Delete', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-    			     </li> 
-    			      	<ul>	
-    				        <li>Latitude : <%= todo_list.latitude %></li>
-    				        <li>Longitude : <%= todo_list.longitude %></li>
-    				        <% if todo_list.longitude && todo_list.latitude %>
-    				      </ul>        
+    			      		<button class="btn btn-danger", text><%= link_to 'Delete', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </button>
+			      </li> 
+    			   <ul>	
+			        <li>Latitude : <%= todo_list.latitude %></li>
+			        <li>Longitude : <%= todo_list.longitude %></li>
+			        <% if todo_list.longitude && todo_list.latitude %>
+    				 </ul>        
     			</ul>	
     	        <% end %>
     		</div>      
@@ -48,10 +47,8 @@
               <button id="watchPositionBtn", class="btn btn-success" >Watch Current Position</button>
               <button id="stopWatchBtn", class="btn btn-danger" >Stop Watch Position</button>
             <div class="alert alert-success", id="APIReturnValues"></div>
-            <div id="map-canvas" style=" padding:1px; border:1px solid; height:200px; width:300px;">
-            </div>
-         </div> 
-<br>  
+            <div id="map-canvas" style=" padding:1px; border:1px solid; height:200px; width:300px;"></div>
+        </div>  
 	</body> 
 	<hr>  
 <html>
@@ -159,16 +156,4 @@ function set_markers(bounds, map, ignore_bounds) {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-
-<script>
-//static map
-        
-        // function gMapInit(){
-        //   var google_tile = "http://maps.google.com/maps/api/staticmap?sensor=false&center=-33.8679519,151.2100445&zoom=14&size=300x300"
-        //   jQuery("#googleMap").html(
-        //       jQuery(document.createElement("img")).attr("src", google_tile)
-        //   );
-        // }
-       
-    </script>
 
