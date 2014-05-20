@@ -44,7 +44,7 @@
     		<hr>
     	<% end %>
         <div class="dynamicPos">
-          <h2> Test Dynamic Position</h2>   
+          <h2>My tasks</h2>   
               <button id="watchPositionBtn", class="btn btn-success" >Watch Current Position</button>
               <button id="stopWatchBtn", class="btn btn-danger" >Stop Watch Position</button>
             <div class="alert alert-success", id="APIReturnValues"></div>
@@ -58,6 +58,7 @@
 
 <script>
 //dynamic map setup
+//Thank you Mathlida for helping troubleshoot and modify this script for 1.5 hours.
 jQuery(window).ready(function(){
             jQuery("#watchPositionBtn").click(initiate_watchlocation);
             jQuery("#stopWatchBtn").click(stop_watchlocation);
@@ -72,7 +73,7 @@ function initialize(latitude, longitude, ignore_bounds) {   //Thanks Joel for ad
         mapTypeControl: true,
         navigationControl: true,
     }
-    console.log('init', mapOptions);
+    //console.log('init', mapOptions);
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     set_markers(new google.maps.LatLngBounds(null), map, ignore_bounds); //and adding ignore_bounds here
 }

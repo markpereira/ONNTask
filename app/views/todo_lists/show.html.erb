@@ -1,9 +1,10 @@
+<div id="container-todoedit">
 <h1><%= @todo_list.title %></h1>
   
 <h2><%= @todo_list.description %></h2>
 
 <% if @todo_list.has_incompleted_items? %>
-<h3>Incomplete Items:</h3>
+<h3 id="incomplete">Incomplete Items:</h3>
 
 <ul>
 	<% @todo_list.todo_items.incomplete.each do |todo_item| %>
@@ -13,7 +14,7 @@
 <% end %>
 
 <% if @todo_list.has_completed_items? %>
-<h3>Complete Items:</h3>
+<h3 id="complete">Complete Items:</h3>
 
 <ul>
 	<% @todo_list.todo_items.complete.each do |todo_item| %>
@@ -24,3 +25,5 @@
 
 <button class="btn btn-warning", text><%= link_to 'Edit', edit_todo_list_path(@todo_list) %></button> 
 <button class="btn btn-inverse", text><%= link_to 'Back', todo_lists_path %></button>
+
+</div>

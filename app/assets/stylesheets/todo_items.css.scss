@@ -14,3 +14,99 @@ Within each todo list
 ====================================================
 */
 
+#container-listitems {
+  background-color: rgba(68, 68, 68, 0.7);
+  max-width: 960px;
+  margin: auto;
+  padding: 1em;
+  border-radius: 1em;
+  text-color: white ;
+}
+
+#container-listitems h1 {
+	color: white;
+}
+
+#container-listitems a {
+	color: white;
+}
+
+table.table.table-hover td {
+	color: white;
+	font-family: 'Gruppo', cursive;
+	font-size: 18px ;
+}
+
+/*
+====================================================
+Within each todo list - New item
+====================================================
+*/
+
+#container-eachitem {
+  background-color: rgba(68, 68, 68, 0.7);
+  max-width: 960px;
+  margin: auto;
+  padding: 1em;
+  border-radius: 1em;
+  text-color: white ;
+  margin-top: 10px;
+}
+
+#container-eachitem h1 {
+	color: white;
+	font-size: 45px;
+}
+
+form#new_todo_item.new_todo_item label {
+	color: white ;
+	font-size: 30px;
+}
+
+input#todo_item_content {
+	height: 50px;
+	width: 300px;
+	border-radius: 10px;
+
+}
+
+form#new_todo_item.new_todo_item input {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+/*
+====================================================
+Within each todo list - Edit item
+====================================================
+*/
+
+#container-editeachitem {
+  background-color: rgba(68, 68, 68, 0.7);
+  max-width: 960px;
+  margin: auto;
+  padding: 1em;
+  border-radius: 1em;
+  text-color: white ;
+  margin-top: 10px;
+}
+
+#container-editeachitem h1 {
+	color: white;
+	font-size: 45px;
+}
+
+#container-editeachitem label {
+	color: white;
+	font-size: 30px;
+}
+
+#container-editeachitem input {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+
+
+
+

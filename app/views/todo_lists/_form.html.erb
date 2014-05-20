@@ -23,7 +23,7 @@
     <%= f.text_area :description %>
   </div>
   
-  <div class="actions">
+<div class="actions">
     <%= hidden_field_tag :latitude %>
     <%= hidden_field_tag :longitude %>
   <hr>
@@ -40,7 +40,7 @@
             <div align="center" id="map" style="width:400px; height:300px; margin-top: 10px;">
             </div>
             </form>
-      </div>  
+      </div>         
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script> 
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>    
@@ -49,7 +49,7 @@
     $(document).ready(function(){
 
       var mapOptions = {
-           zoom: 14,
+           zoom: 16,
            mapTypeId: google.maps.MapTypeId.ROADMAP,
            center: new google.maps.LatLng(-33.8679519,151.2100445)
          };
@@ -105,12 +105,8 @@
          });   
      });
     </script>
-
   <hr>
-      <%= f.submit :value => "Create Todo List", :class => 'btn btn-primary' %>
- 
- </div
+      <%= f.submit :value => "Create Todo List", :class => 'btn btn-primary' %> 
+</div
 <% end %>
 </html>
-
-
