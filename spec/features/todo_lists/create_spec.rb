@@ -5,6 +5,7 @@ describe "Creating todo lists" do
 	def create_todo_list(options={})
 		options[:title] ||= "My todo list"
 		options[:description] ||="This is my todo list"
+		options[:search] ||="Some Search string"
 	
 		visit "/todo_lists"
 		click_link "New Todo list"
@@ -12,6 +13,7 @@ describe "Creating todo lists" do
 	
 		fill_in "Title", with: options[:title]
 		fill_in "Description", with: options[:description]
+		fill_in "Add a location for this list", with: options[:search]
 		click_button "Create Todo list"
 	end	
 
